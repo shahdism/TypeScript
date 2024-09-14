@@ -49,4 +49,17 @@ describe('Test Express Routes', () => {
     expect(res.body).toHaveProperty('host_name', 'mocked-hostname');
     expect(res.body).toHaveProperty('headers');
   });
+
+
+
+
+  it(' return the client IP from X-Forwarded-For header on /info', async () => {
+    const res = await request(app) 
+      .get('/info') 
+      .set('X-Forwarded-For', '203.0.113.195'); 
+  
+    expect(res.statusCode).toBe(200); 
+    expect(res.body).toHaveProperty('client_address', '203.0.113.195');
+  });
+  
 });
