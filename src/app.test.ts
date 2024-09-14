@@ -1,13 +1,11 @@
-import request from 'supertest';  // Import supertest to simulate requests
-import express from 'express';    // Import your app
-import os from 'os';              // For mocking os functions (if needed)
+import request from 'supertest';  
+import express from 'express';   
+import os from 'os';              
 
-// Mocking the os.hostname() if you want to control the output
 jest.mock('os', () => ({
   hostname: jest.fn(() => 'mocked-hostname'),
 }));
 
-// The same app you defined in your original code
 const app = express();
 app.use(express.json());
 
